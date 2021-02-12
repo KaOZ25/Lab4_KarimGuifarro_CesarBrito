@@ -7,10 +7,7 @@ package lab4_karimguifarro_cesarbrito;
 
 import java.util.*;
 
-/**
- *
- * @author Karim Ozael
- */
+
 public class Pateador extends Jugador {
      Random random = new Random();
     private int habilidadPateadora;
