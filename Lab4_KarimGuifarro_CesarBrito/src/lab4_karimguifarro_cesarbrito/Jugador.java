@@ -10,22 +10,29 @@ package lab4_karimguifarro_cesarbrito;
  * @author Karim Ozael
  */
 public class Jugador {
-    private String nombre,apodos,equipofav,jugadorfav;
-    private int numcamisa,nacimiento,estrellas;
+     private String nombre;
+    private String apodo;
+    private int numeroCamiseta;
+    private String equipoFutFsvorito;
+    private String equipoBaskFsvorito;
+    private String jugadorFavorito;
     private boolean mayor;
+    private int nacimiento;
+    private int estrellas;
 
     public Jugador() {
     }
 
-    public Jugador(String nombre, String apodos, String equipofav, String jugadorfav, int numcamisa, int nacimiento, int estrellas, boolean mayor) {
+    public Jugador(String nombre, String apodo, int numeroCamiseta, String equipoFutFsvorito, String equipoBaskFsvorito, String jugadorFavorito, boolean mayor, int nacimiento, int estrellas) {
         this.nombre = nombre;
-        this.apodos = apodos;
-        this.equipofav = equipofav;
-        this.jugadorfav = jugadorfav;
-        this.numcamisa = numcamisa;
-        this.nacimiento = nacimiento;
-        this.estrellas = estrellas;
+        this.apodo = apodo;
+        this.numeroCamiseta = numeroCamiseta;
+        this.equipoFutFsvorito = equipoFutFsvorito;
+        this.equipoBaskFsvorito = equipoBaskFsvorito;
+        this.jugadorFavorito = jugadorFavorito;
         this.mayor = mayor;
+        this.nacimiento = nacimiento;
+        this.setEstrellas(estrellas);
     }
 
     public String getNombre() {
@@ -36,36 +43,52 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public String getApodos() {
-        return apodos;
+    public String getApodo() {
+        return apodo;
     }
 
-    public void setApodos(String apodos) {
-        this.apodos = apodos;
+    public void setApodo(String apodos) {
+        this.apodo = apodo;
     }
 
-    public String getEquipofav() {
-        return equipofav;
+    public int getNumeroCamiseta() {
+        return numeroCamiseta;
     }
 
-    public void setEquipofav(String equipofav) {
-        this.equipofav = equipofav;
+    public void setNumeroCamiseta(int numeroCamiseta) {
+        this.numeroCamiseta = numeroCamiseta;
     }
 
-    public String getJugadorfav() {
-        return jugadorfav;
+    public String getEquipoFutFsvorito() {
+        return equipoFutFsvorito;
     }
 
-    public void setJugadorfav(String jugadorfav) {
-        this.jugadorfav = jugadorfav;
+    public void setEquipoFutFsvorito(String equipoFutFsvorito) {
+        this.equipoFutFsvorito = equipoFutFsvorito;
     }
 
-    public int getNumcamisa() {
-        return numcamisa;
+    public String getEquipoBaskFsvorito() {
+        return equipoBaskFsvorito;
     }
 
-    public void setNumcamisa(int numcamisa) {
-        this.numcamisa = numcamisa;
+    public void setEquipoBaskFsvorito(String equipoBaskFsvorito) {
+        this.equipoBaskFsvorito = equipoBaskFsvorito;
+    }
+
+    public String getJugadorFavorito() {
+        return jugadorFavorito;
+    }
+
+    public void setJugadorFavorito(String jugadorFavorito) {
+        this.jugadorFavorito = jugadorFavorito;
+    }
+
+    public boolean isMayor() {
+        return mayor;
+    }
+
+    public void setMayor(boolean mayor) {
+        this.mayor = mayor;
     }
 
     public int getNacimiento() {
@@ -81,20 +104,14 @@ public class Jugador {
     }
 
     public void setEstrellas(int estrellas) {
-        this.estrellas = estrellas;
-    }
-
-    public boolean isMayor() {
-        return mayor;
-    }
-
-    public void setMayor(boolean mayor) {
-        this.mayor = mayor;
+        if (estrellas >= 1 & estrellas <= 5) {
+            this.estrellas = estrellas;
+        }
     }
 
     @Override
     public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", apodos=" + apodos + ", equipofav=" + equipofav + ", jugadorfav=" + jugadorfav + ", numcamisa=" + numcamisa + ", nacimiento=" + nacimiento + ", estrellas=" + estrellas + ", mayor=" + mayor + '}';
+        return "Jugadores{" + "nombre=" + nombre + ", apodo=" + apodo + ", numeroCamiseta=" + numeroCamiseta + ", equipoFutFsvorito=" + equipoFutFsvorito + ", equipoBaskFsvorito=" + equipoBaskFsvorito + ", jugadorFavorito=" + jugadorFavorito + ", mayor=" + mayor + ", nacimiento=" + nacimiento + ", estrellas=" + estrellas;
     }
     
 }
