@@ -51,6 +51,11 @@ public class Tirador extends Jugador {
         }
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Tirador{" + "random=" + random + ", tiroTres=" + tiroTres + ", tiroDos=" + tiroDos + ", manejoBalon=" + manejoBalon + "\n";
+    }
+
     public boolean tiroTres() {
         int num = 1 + random.nextInt(100);
         double probabilidad = (tiroTres + manejoBalon) * 0.90 * super.getEstrellas() / 10;

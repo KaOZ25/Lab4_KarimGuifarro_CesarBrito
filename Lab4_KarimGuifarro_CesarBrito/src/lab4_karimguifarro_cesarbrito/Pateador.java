@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab4_karimguifarro_cesarbrito;
 
-import java.util.*;
-
+import java.util.Random;
 
 public class Pateador extends Jugador {
-     Random random = new Random();
+
+    Random random = new Random();
+
     private int habilidadPateadora;
     private int fuerza;
     private int habilidadRagateadora;
@@ -17,6 +13,7 @@ public class Pateador extends Jugador {
     public Pateador() {
         super();
     }
+
     public Pateador(int habilidadPateadora, int fuerza, int habilidadRagateadora, String nombre, String apodo, int numeroCamiseta, String equipoFutFsvorito, String equipoBaskFsvorito, String jugadorFavorito, boolean mayor, int nacimiento, int estrellas) {
         super(nombre, apodo, numeroCamiseta, equipoFutFsvorito, equipoBaskFsvorito, jugadorFavorito, mayor, nacimiento, estrellas);
         this.setHabilidadPateadora(habilidadPateadora);
@@ -56,7 +53,7 @@ public class Pateador extends Jugador {
 
     @Override
     public String toString() {
-        return "Pateador{" + "habilidadPateadora=" + habilidadPateadora + ", fuerza=" + fuerza + ", habilidadRagateadora=" + habilidadRagateadora;
+        return super.toString() + "Pateador{" + "habilidadPateadora=" + habilidadPateadora + ", fuerza=" + fuerza + ", habilidadRagateadora=" + habilidadRagateadora + "\n";
     }
 
     public boolean tiro() {
@@ -68,4 +65,5 @@ public class Pateador extends Jugador {
             return false;
         }
     }
+
 }

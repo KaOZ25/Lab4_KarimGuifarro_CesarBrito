@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab4_karimguifarro_cesarbrito;
 
-import java.util.*;
-/**
- *
- * @author Karim Ozael
- */
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Equipo {
+
     private String nombreEquipo;
     private String estadio;
     private String Pais;
@@ -24,7 +18,7 @@ public class Equipo {
     public Equipo() {
     }
 
-    public Equipo(String nombreEquipo, String estadio, String Pais, String nombreEntrenador, String nombreDueño, String nombreMascota, String Color, Date fecha) {
+    public Equipo(String nombreEquipo, String estadio, String Pais, String nombreEntrenador, String nombreDueño, String nombreMascota, String Color, Date fecha, ArrayList<Jugador> jugadores) {
         this.nombreEquipo = nombreEquipo;
         this.estadio = estadio;
         this.Pais = Pais;
@@ -33,6 +27,7 @@ public class Equipo {
         this.nombreMascota = nombreMascota;
         this.Color = Color;
         this.fecha = fecha;
+        this.jugadores = jugadores;
     }
 
     public String getNombreEquipo() {
@@ -109,7 +104,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombreEquipo=" + nombreEquipo + ", estadio=" + estadio + ", Pais=" + Pais + ", nombreEntrenador=" + nombreEntrenador + ", nombreDue\u00f1o=" + nombreDueño + ", nombreMascota=" + nombreMascota + ", Color=" + Color + ", fecha=" + fecha + ", jugadores=" + jugadores;
+        return "Equipo{" + "nombreEquipo=" + nombreEquipo + ", estadio=" + estadio + ", Pais=" + Pais + ", nombreEntrenador=" + nombreEntrenador + ", nombreDueño=" + nombreDueño + ", nombreMascota=" + nombreMascota + ", Color=" + Color + ", fecha=" + fecha + "\njugadores=" + jugadores;
     }
 
 }

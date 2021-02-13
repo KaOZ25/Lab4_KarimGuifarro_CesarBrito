@@ -11,140 +11,317 @@ import java.text.SimpleDateFormat;
 
 public class Lab4_KarimGuifarro_CesarBrito {
 
-    public static Scanner KaOz = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
     public static ArrayList<Equipo> equipos = new ArrayList();
     public static SimpleDateFormat osd = new SimpleDateFormat("dd/MM/yyy");
-    public static ArrayList<Jugador> jugador  = new ArrayList();
+    public static ArrayList<Jugador> jugadores = new ArrayList();
+
     public static void main(String[] args) throws ParseException {
-        char k = 'c';
-        while (k == 'c') {
-            System.out.print("*****Menu*****\n"
-                    + "1) Equipos\n"
-                    + "2) Jugadores\n"
-                    + "3) Juego!\n"
-                    + "4)Salida\n");
-            int op = KaOz.nextInt();
-            switch (op) {
-                case 1: {
-                    System.out.println("Equipos\n"
-                            + "1)Agregar\n"
-                            + "2)Modificar\n"
-                            + "3)Listar\n"
-                            + "4)Eliminar\n"
-                            + "5)Salir");
-                    int po = KaOz.nextInt();
-                    switch (po) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-                        case 1: {
-                            String nombreEquipo, estadio, Pais, nombreEntrenador, nombreDueño, nombreMascota, color, fech;
-                            Date fecha;
-                            System.out.println("Ingrese el nombre del Equipo:");
-                            nombreEquipo = KaOz.next();
-                            System.out.println("Ingrese el nombre del estadio:");
-                            estadio = KaOz.next();
-                            System.out.println("Ingrese el pais de origen:");
-                            Pais = KaOz.next();
-                            System.out.println("Ingrese el nombre del entrenador:");
-                            nombreEntrenador = KaOz.next();
-                            System.out.println("Ingrese el nombre del dueño:");
-                            nombreDueño = KaOz.next();
-                            System.out.println("Ingrese el nombre de la mascota:");
-                            nombreMascota = KaOz.next();
-                            System.out.println("Ingrese el color del equipo:");
-                            color = KaOz.next();
-                            System.out.println("Ingrese la fecha de creacion:");
-                            fech = KaOz.next();
-                            fecha = osd.parse(fech);
-                            equipos.add(new Equipo(nombreEquipo, estadio, Pais, nombreEntrenador, nombreDueño, nombreMascota, color, fecha));
-                        }
-                        break;
-                        case 2: {
+        int opcion = 1;
 
-                        }
-                        break;
-                        case 3: {
-                            Print(equipos);
-                            System.out.print("Ingrese la posicion del equipo que desea eliminar: ");
-                            int p = KaOz.nextInt();
-                            if (p <= equipos.size()) {
-                                equipos.remove(p);
-                            }
-                        }
-                        case 4:{
-                            
-                        }
-                        case 5:{
-                            break;
-                        }
-                        default:
-                            System.out.println("Ingrese un valor correcto");
+        while (opcion != 6) {
+            System.out.print("===========MENU===========\n"
+                    + "1. Agregar Equipo\n"
+                    + "2. Modificar Equipo\n"
+                    + "3. Eliminar Equipo\n"
+                    + "4. Listar Equipo\n"
+                    + "5. Simulacion del juego\n"
+                    + "6. Salir del menu\n"
+                    + "Ingrese su opcion: ");
+            opcion = sc.nextInt();
+            if (opcion == 1) {
+                System.out.print("Ingrese el nombre del equipo: ");
+                String nombreEquipo = sc.next();
+                System.out.print("Ingrese el nombre del estadio: ");
+                String estadio = sc.next();
+                System.out.print("Ingrese el Pais: ");
+                String pais = sc.next();
+                System.out.print("Ingrese el nombre del nombre del entrenador: ");
+                String nombreEntrenador = sc.next();
+                System.out.print("Ingrese el nombre del nombre del dueño: ");
+                String nombreDueño = sc.next();
+                System.out.print("Ingrese el nombre del nombre de la mascota: ");
+                String nombreMascota = sc.next();
+                System.out.print("Ingrese el color del equipo: ");
+                String color = sc.next();
+                Date fecha = new Date();
+                System.out.print("Ingrese su fecha de creacion dd/MM/yyyy: ");
+                String entrada = sc.next();
+                fecha = sdf.parse(entrada);
+                System.out.println("******JUGADORES******");
+                System.out.println("***PATEADORES***");
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Nuevo Jugador*************");
+                    System.out.print("Ingrese el nombre del jugador: ");
+                    String nombre = sc.next();
+                    System.out.print("Ingrese el apodo del jugador: ");
+                    String apodo = sc.next();
+                    System.out.print("Ingrese el numero de camiseta: ");
+                    int numeroCamiseta = sc.nextInt();
+                    System.out.print("Ingrese el equipo de futbol favorito: ");
+                    String equipoFutFsvorito = sc.next();
+                    System.out.print("Ingrese el equipo de Basketball favorito: ");
+                    String equipoFBaskFsvorito = sc.next();
+                    boolean mayor;
+                    System.out.print("Es mayor de edad[s/n]: ");
+                    char age = sc.next().charAt(0);
+                    if (age == 's' || age == 'S') {
+                        mayor = true;
+                    } else {
+                        mayor = false;
                     }
+                    System.out.print("Ingrese el año de nacimiento: ");
+                    int nacimiento = sc.nextInt();
+                    System.out.print("Ingrese la cantidad de estrellas: ");
+                    int estrellas = sc.nextInt();
+                    System.out.print("Ingrese la habilidad pateadora[1-100]: ");
+                    int habilidadPateadora = sc.nextInt();
+                    System.out.print("Ingrese la fuerza[1-100]: ");
+                    int fuerza = sc.nextInt();
+                    System.out.print("Ingrese la habilidad ragateodora[1-100]: ");
+                    int habilidadRagateadora = sc.nextInt();
+                    jugadores.add(new Pateador(habilidadPateadora, fuerza, habilidadRagateadora, nombre, apodo, numeroCamiseta, equipoFutFsvorito, equipoFBaskFsvorito, equipoFutFsvorito, mayor, nacimiento, estrellas));
                 }
-                break;
-                case 2:{
-                     System.out.println("Jugadores\n"
-                            + "1)Agregar\n"
-                            + "2)Modificar\n"
-                            + "3)Listar\n"
-                            + "4)Eliminar\n"
-                            + "5)Salir");
-                    int po = KaOz.nextInt();
-                    switch (po) {
-                        case 1:{
-                            String nombre,apodo,equipoFutFavorito,equipoBaskFavorito,jugadorFavorito;
-                            int numeroCamiseta,nacimiento,estrellas,edad;
-                            boolean mayor=false;
-                            System.out.println("ingrese el nombre del jugador:");
-                            nombre=KaOz.next();
-                            System.out.println("Ingrese el apodo:");
-                            apodo=KaOz.next();
-                            System.out.println("Ingrese el equipo de futbol favorito:");
-                            equipoFutFavorito=KaOz.next();
-                            System.out.println("Ingrese el equipo de Basketball favorito:");
-                            equipoBaskFavorito=KaOz.next();
-                            System.out.println("Ingrese su jugador favorito:");
-                            jugadorFavorito=KaOz.next();
-                            System.out.println("Ingrese el numero de su camisa:");
-                            numeroCamiseta=KaOz.nextInt();
-                            System.out.println("Ingrese su fecha de nacimiento");
-                            nacimiento=KaOz.nextInt();
-                            System.out.println("Ingrese la cantidad de estrellas:");
-                            estrellas=KaOz.nextInt();
-                            while(estrellas<=1 || estrellas>=5 ){
-                                System.out.println("Ingrese un valor permitido");
-                                estrellas=KaOz.nextInt();
-                            }
-                            System.out.println("Ingrese la edad:");
-                            edad=KaOz.nextInt();
-                            if (edad>=21) {
-                                mayor=true;
-                            }
-                            jugador.add(new Jugador( nombre,apodo,equipoFutFavorito,equipoBaskFavorito,jugadorFavorito,numeroCamiseta,nacimiento,estrellas,mayor));
-                        }
-                        case 2:{
-                            
-                        }
-                        case 3:{
-                            
-                        }
-                        case 4:{
-                            
-                        }
-                               
+                System.out.println("***TIRADORES***");
+                for (int i = 0; i < 2; i++) {
+                    System.out.println("Nuevo Jugador*************");
+                    System.out.print("Ingrese el nombre del jugador: ");
+                    String nombre = sc.next();
+                    System.out.print("Ingrese el apodo del jugador: ");
+                    String apodo = sc.next();
+                    System.out.print("Ingrese el numero de camiseta: ");
+                    int numeroCamiseta = sc.nextInt();
+                    System.out.print("Ingrese el equipo de futbol favorito: ");
+                    String equipoFutFsvorito = sc.next();
+                    System.out.print("Ingrese el equipo de Basketball favorito: ");
+                    String equipoFBaskFsvorito = sc.next();
+                    boolean mayor;
+                    System.out.print("Es mayor de edad[s/n]: ");
+                    char age = sc.next().charAt(0);
+                    if (age == 's' || age == 'S') {
+                        mayor = true;
+                    } else {
+                        mayor = false;
                     }
+                    System.out.print("Ingrese el año de nacimiento: ");
+                    int nacimiento = sc.nextInt();
+                    System.out.print("Ingrese la cantidad de estrellas: ");
+                    int estrellas = sc.nextInt();
+                    System.out.print("Ingrese el tiro de tres[1-100]: ");
+                    int tiroTres = sc.nextInt();
+                    System.out.print("Ingrese el tiro de dos[1-100]: ");
+                    int tiroDos = sc.nextInt();
+                    System.out.print("Ingrese el manejo del balon[1-100]: ");
+                    int manejoBalon = sc.nextInt();
+                    jugadores.add(new Tirador(tiroTres, tiroDos, manejoBalon, nombre, apodo, numeroCamiseta, equipoFutFsvorito, equipoFBaskFsvorito, equipoFutFsvorito, mayor, nacimiento, estrellas));
                 }
-                break;
-                case 3:{
-                    
+                equipos.add(new Equipo(nombreEquipo, estadio, pais, nombreEntrenador, nombreDueño, nombreMascota, color, fecha, jugadores));
+            } else if (opcion == 2) {
+                System.out.print("Ingrese la posicion del equipo que desea modificar: ");
+                int p = sc.nextInt();
+                if (p < equipos.size()) {
+                    System.out.print("******OPCIONES******\n"
+                            + "1. Nombre del equipo\n"
+                            + "2. Estadio\n"
+                            + "3. Pais\n"
+                            + "4. Entrenador\n"
+                            + "5. Dueño\n"
+                            + "6. Mascota\n"
+                            + "7. Color\n"
+                            + "8. Fecha\n"
+                            + "9. Jugadores\n"
+                            + "Ingrese su opcion: ");
+                    int modi = sc.nextInt();
+                    if (modi == 1) {
+                        System.out.print("Ingrese el nombre del equipo: ");
+                        String nombreEquipo = sc.next();
+                        equipos.get(p).setNombreEquipo(nombreEquipo);
+                    } else if (modi == 2) {
+                        System.out.print("Ingrese el nombre del estadio: ");
+                        String estadio = sc.next();
+                        equipos.get(p).setEstadio(estadio);
+                    } else if (modi == 3) {
+                        System.out.print("Ingrese el Pais: ");
+                        String pais = sc.next();
+                        equipos.get(p).setPais(pais);
+                    } else if (modi == 4) {
+                        System.out.print("Ingrese el nombre del nombre del entrenador: ");
+                        String nombreEntrenador = sc.next();
+                        equipos.get(p).setNombreEntrenador(nombreEntrenador);
+                    } else if (modi == 5) {
+                        System.out.print("Ingrese el nombre del nombre del dueño: ");
+                        String nombreDueño = sc.next();
+                        equipos.get(p).setNombreDueño(nombreDueño);
+                    } else if (modi == 6) {
+                        System.out.print("Ingrese el nombre del nombre de la mascota: ");
+                        String nombreMascota = sc.next();
+                        equipos.get(p).setNombreMascota(nombreMascota);
+                    } else if (modi == 7) {
+                        System.out.print("Ingrese el color del equipo: ");
+                        String color = sc.next();
+                        equipos.get(p).setColor(color);
+                    } else if (modi == 8) {
+                        Date fecha = new Date();
+                        System.out.print("Ingrese su fecha de nacimiento dd/MM/yyyy: ");
+                        String entrada = sc.next();
+                        fecha = sdf.parse(entrada);
+                        equipos.get(p).setFecha(fecha);
+                    } else if (modi == 9) {
+                        System.out.println("******JUGADORES******");
+                        System.out.println("***PATEADORES***");
+                        for (int i = 0; i < 3; i++) {
+                            System.out.println("Nuevo Jugador");
+                            System.out.print("Ingrese el nombre del jugador: ");
+                            String nombre = sc.next();
+                            System.out.print("Ingrese el apodo del jugador: ");
+                            String apodo = sc.next();
+                            System.out.print("Ingrese el numero de camiseta: ");
+                            int numeroCamiseta = sc.nextInt();
+                            System.out.print("Ingrese el equipo de futbol favorito: ");
+                            String equipoFutFsvorito = sc.next();
+                            System.out.print("Ingrese el equipo de Basketball favorito: ");
+                            String equipoFBaskFsvorito = sc.next();
+                            boolean mayor;
+                            System.out.print("Es mayor de edad[s/n]: ");
+                            char age = sc.next().charAt(0);
+                            if (age == 's' || age == 'S') {
+                                mayor = true;
+                            } else {
+                                mayor = false;
+                            }
+                            System.out.print("Ingrese el año de nacimiento: ");
+                            int nacimiento = sc.nextInt();
+                            System.out.print("Ingrese la cantidad de estrellas: ");
+                            int estrellas = sc.nextInt();
+                            System.out.print("Ingrese la habilidad pateadora[1-100]: ");
+                            int habilidadPateadora = sc.nextInt();
+                            System.out.print("Ingrese la fuerza[1-100]: ");
+                            int fuerza = sc.nextInt();
+                            System.out.print("Ingrese la habilidad ragateodora[1-100]: ");
+                            int habilidadRagateadora = sc.nextInt();
+                            jugadores.add(new Pateador(habilidadPateadora, fuerza, habilidadRagateadora, nombre, apodo, numeroCamiseta, equipoFutFsvorito, equipoFBaskFsvorito, equipoFutFsvorito, mayor, nacimiento, estrellas));
+                        }
+                        System.out.println("***TIRADORES***");
+                        for (int i = 0; i < 2; i++) {
+                            System.out.println("Nuevo Jugador");
+                            System.out.print("Ingrese el nombre del jugador: ");
+                            String nombre = sc.next();
+                            System.out.print("Ingrese el apodo del jugador: ");
+                            String apodo = sc.next();
+                            System.out.print("Ingrese el numero de camiseta: ");
+                            int numeroCamiseta = sc.nextInt();
+                            System.out.print("Ingrese el equipo de futbol favorito: ");
+                            String equipoFutFsvorito = sc.next();
+                            System.out.print("Ingrese el equipo de Basketball favorito: ");
+                            String equipoFBaskFsvorito = sc.next();
+                            boolean mayor;
+                            System.out.print("Es mayor de edad[s/n]: ");
+                            char age = sc.next().charAt(0);
+                            if (age == 's' || age == 'S') {
+                                mayor = true;
+                            } else {
+                                mayor = false;
+                            }
+                            System.out.print("Ingrese el año de nacimiento: ");
+                            int nacimiento = sc.nextInt();
+                            System.out.print("Ingrese la cantidad de estrellas: ");
+                            int estrellas = sc.nextInt();
+                            System.out.print("Ingrese el tiro de tres[1-100]: ");
+                            int tiroTres = sc.nextInt();
+                            System.out.print("Ingrese el tiro de dos[1-100]: ");
+                            int tiroDos = sc.nextInt();
+                            System.out.print("Ingrese el manejo del balon[1-100]: ");
+                            int manejoBalon = sc.nextInt();
+                            jugadores.add(new Tirador(tiroTres, tiroDos, manejoBalon, nombre, apodo, numeroCamiseta, equipoFutFsvorito, equipoFBaskFsvorito, equipoFutFsvorito, mayor, nacimiento, estrellas));
+                        }
+                        equipos.get(p).setJugadores(jugadores);
+                    } else {
+                        System.out.println("OPCION NO DISPONIBLE");
+                    }
+
+                } else {
+                    System.out.println("Esta posicion no esta disponible");
                 }
+
+            } else if (opcion == 3) {
+                System.out.print("Ingrese la posicion del equipo que desea eliminar: ");
+                int p = sc.nextInt();
+                if (p < equipos.size()) {
+                    equipos.remove(p);
+                } else {
+                    System.out.println("Esta posicion no esta disponible");
+                }
+
+            } else if (opcion == 4) {
+                for (Object e : equipos) {
+                    System.out.println(equipos.indexOf(e) + " - " + e);
+                }
+
+            } else if (opcion == 5) {
+                if (equipos.size() > 2) {
+                    System.out.print("Ingrese la posicion del equipo 1 para jugar: ");
+                    int p = sc.nextInt();
+                    while (p >= equipos.size()) {
+                        System.out.println("Opcion no valida");
+                        System.out.print("Ingrese la posicion del equipo 1 para jugar: ");
+                        p = sc.nextInt();
+                    }
+                    Object equipo1 = equipos.get(p);
+                    System.out.print("Ingrese la posicion del equipo 2 para jugar: ");
+                    int p2 = sc.nextInt();
+                    while (p2 == p || p2 >= equipos.size()) {
+                        System.out.println("Opcion no valida(no puede repetir equipo)");
+                        System.out.print("Ingrese la posicion del equipo para jugar: ");
+                        p2 = sc.nextInt();
+                    }
+                    Object equipo2 = equipos.get(p2);
+                    simulacion(equipo1, equipo2);
+                } else {
+                    System.out.println("NO HAY SUFICIENTES EQUIPOS");
+                }
+
+            } else if (opcion == 6) {
+                System.out.println("SALIENDO DEL PROGRAMA.....");
+            } else {
+                System.out.println("OPCION NO DISPOBIBLE");
             }
-
         }
     }
 
-    static void Print(ArrayList equipos) {
+    public static void simulacion(Object equipo1, Object equipo2) {
+        int cont1 = 0, cont2 = 0;
+        print(equipos);
+        int get = sc.nextInt();
+        equipo1 = equipos.get(get);
+        print(equipos);
+        
+        int get2 = sc.nextInt();
+        while (get2 == get) {
+            System.out.println("No pueden elegir el mismo equipo");
+            get2 = sc.nextInt();
+            equipo2 = equipos.get(get);
+        }
+        System.out.println(equipos.get(get));
+        
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 1) {
+                System.out.println("Turno del equipo 1");
+                
+            }
+        }
+    }
+
+    public static void print(ArrayList equipos) {
         for (int i = 0; i < equipos.size(); i++) {
-            System.out.println("[" + equipos.get(i) + "]");
+            System.out.println(equipos.get(i));
+        }
+    }
+
+    public static void print2(ArrayList jugadores) {
+        for (int i = 0; i < jugadores.size(); i++) {
+            System.out.println(jugadores.get(i));
         }
     }
 }
